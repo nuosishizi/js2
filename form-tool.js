@@ -72,7 +72,7 @@
         res = res.join('');
         document.getElementsByClassName("track_link")[0].value = res;
         // 检测原链接是否包含关键词
-        var reg = RegExp(/holyspiritspeaks|kingdomsalvation|bible-..|alkitabonline|bibbia-..|bibliadeestudo|biblia-..|godfootsteps|jesucristo|evangelio|easternlightning/);
+        var reg = RegExp(/holyspiritspeaks|kingdomsalvation|answerforchristians|bible-..|alkitabonline|bibbia-..|bibliadeestudo|biblia-..|godfootsteps|jesucristo|evangelio|easternlightning|vangelodioggi/);
         if (fn_web_link.match(reg)) {
             var aa = '<a href="' + res + '" target = "_blank">' + res + '</a>';
         } else {
@@ -119,7 +119,7 @@
         // 引导语
         var fb_guide = document.getElementsByClassName("guide")[0].value;
         // 中文引导语
-        var fb_cn_guide = document.getElementsByClassName("cn_guide")[0].value;
+        var fb_cn_guide = document.getElementsByClassName("cn_guide")[0].value.replace(/^"*|["]*$/g,"");
         // 图片来源
         var fn_image_origin = getSheetName("posting_status");
         //网站原链接
@@ -201,13 +201,6 @@
                 alert("请选择名字!");
                 return;
             }
-            if (fb_pose_link.length == 0) {
-                alert("请输入贴文链接!");
-                return;
-            } else if (fb_post_url != "facebook.com") {
-                alert("请输入Facebook链接!");
-                return;
-            }
         }
         var d = new Date();
         var a = d.getFullYear();
@@ -230,10 +223,17 @@
 	try {
 	google.script.run.cleaner();
 	} catch {}
-        $(".post_link").val('');
+    try {
+    if (track_link.match(/holyspiritspeaks/g) == "holyspiritspeaks") {
+    google.script.run.userClicked4(date,filter_name,fb_name,fb_article_place,fb_post_type,fb_place_name,fb_image_name,fn_image_origin,fb_cn_guide,fn_web_link,fb_pose_link,track_link,none);
+    } else {}
+    } catch {}
+    document.getElementsByClassName("post_link")[0].value="";
         try { 
-        $('#show_track_link').val("");
-        $('#show_track_link').html("");
+        document.getElementsByClassName("track_link")[0].innerHTML="";
+	document.getElementsByClassName("track_link")[0].value="";
+        document.getElementById("show_hyperlink").innerHTML="";
+	document.getElementById("show_hyperlink").value="";
         } catch {}
     }
 
