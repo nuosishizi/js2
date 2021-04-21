@@ -64,7 +64,7 @@
 	try {
 var ok = fb_article_place.match(/-|_/g)[0];
 } catch {
-var ok = "";
+var ok = getSheetName("selectName").match(/[0-9].+[0-9]/g);
 }
         if (fn_web_link.match(/\/$/g) == "/") {
         if (user_id || "undefined" == typeof user_id || 0 == user_id) lastLink = fn_web_link.replace(/\/$/g, "") + "&?source=" + fb_article_place.replace(/-|_/g,user_id+ok) + "&num=" + num;
