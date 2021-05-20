@@ -69,10 +69,10 @@ var ok = "";
 	
         if (fn_web_link.match(/\/$/g) == "/") {
         if (user_id || "undefined" == typeof user_id || 0 == user_id) lastLink = fn_web_link.replace(/\/$/g, "") + "&?source=" + fb_article_place.replace(/-|_/g,user_id+ok).replace(/-$|_$/g,"") + "&num=" + num;
-            else var lastLink = fn_web_link + "&?source=" + fb_article_place + "&num=" + num;
+            else var lastLink = fn_web_link + "&?source=" + fb_article_place + fb_hyperlink + "&num=" + num;
         } else {
             if (user_id || "undefined" == typeof user_id || 0 == user_id) lastLink = fn_web_link + "?source=" + fb_article_place.replace(/-|_/g,user_id+ok).replace(/-$|_$/g,"") + "&num=" + num;
-            else var lastLink = fn_web_link + "&?source=" + fb_article_place + "&num=" + num;
+            else var lastLink = fn_web_link + "&?source=" + fb_article_place + fb_hyperlink + "&num=" + num;
         }
         var res = lastLink.split(" ");
         res = res.join('');
