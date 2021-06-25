@@ -196,7 +196,7 @@ function create() {
             var original_link = "";
         }
         // 随机数，给链接用
-        var num = getRandom(0, 10000000);
+        var num = getNum();
         // 判断所需内容是否填全
         if (fb_post_place.length == 0) {
             alert("请输入发帖位置!");
