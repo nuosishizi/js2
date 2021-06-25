@@ -64,9 +64,18 @@ var a6 = d.getSeconds();
 var now_date = f_n(a2) + f_n(a3);
 
 // 生成随机数
-function getRandom(n, m) {
-    var num = Math.floor(Math.random() * (m - n + 1) + n);
-    return num;
+function formatZero(num, bits) {
+if (bits == 2) {
+return ("0" + num).slice(-2);
+} else if (bits == 3) {
+return ("00" + num).slice(-3);
+} else return num + "";
+}
+
+function getRandom() {
+var date = new Date();
+return (date.getFullYear() + "") + formatZero(date.getMonth() + 1, 2) + formatZero(date.getDate(), 2)
++ formatZero(date.getHours(), 2) + formatZero(date.getMinutes(), 2) + formatZero(date.getSeconds(), 2) + formatZero(date.getMilliseconds(), 3);
 }
 
 // Messenger链接
@@ -105,21 +114,8 @@ function create_link() {
     var user_id = getSheetName("select_name").match(/[0-9]{3}/g);
     // 原链接
     var original_link = document.getElementsByClassName("original_link")[0].value.replace(/\s/g, "").replace(/\?source.+/g, "");
-    // 追踪链接代码，日期加时间 2021062520180111，给链接用
-function formatZero(num, bits) {
-if (bits == 2) {
-return ("0" + num).slice(-2);
-} else if (bits == 3) {
-return ("00" + num).slice(-3);
-} else return num + "";
-}
-
-function getNum() {
-var date = new Date();
-return (date.getFullYear() + "") + formatZero(date.getMonth() + 1, 2) + formatZero(date.getDate(), 2)
-+ formatZero(date.getHours(), 2) + formatZero(date.getMinutes(), 2) + formatZero(date.getSeconds(), 2) + formatZero(date.getMilliseconds(), 3);
-}
-    var num = getNum();
+    // 随机数，给链接用
+    var num = getRandom();
     // 判断所需内容是否填全
     if (select_name == "") {
         alert("请选择名字!");
@@ -196,7 +192,7 @@ function create() {
             var original_link = "";
         }
         // 随机数，给链接用
-        var num = getNum();
+        var num = getRandom();
         // 判断所需内容是否填全
         if (fb_post_place.length == 0) {
             alert("请输入发帖位置!");
