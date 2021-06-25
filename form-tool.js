@@ -60,7 +60,20 @@
  		return;
 	    }
         } else {}
-        var num = Math.floor(Math.random() * 10000000);
+	function formatZero(num, bits) {
+if (bits == 2) {
+return ("0" + num).slice(-2);
+} else if (bits == 3) {
+return ("00" + num).slice(-3);
+} else return num + "";
+}
+
+function getNum() {
+var date = new Date();
+return (date.getFullYear() + "") + formatZero(date.getMonth() + 1, 2) + formatZero(date.getDay(), 2)
++ formatZero(date.getHours(), 2) + formatZero(date.getMinutes(), 2) + formatZero(date.getSeconds(), 2) + formatZero(date.getMilliseconds(), 3);
+}
+        var num = getNum();
 	try {
 var ok = fb_article_place.match(/-|_/g)[0];
 } catch {
