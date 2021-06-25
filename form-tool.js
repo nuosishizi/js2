@@ -60,6 +60,8 @@
  		return;
 	    }
         } else {}
+	    
+	    //这里是根据当前日期和时间生成编号
 	function formatZero(num, bits) {
 if (bits == 2) {
 return ("0" + num).slice(-2);
@@ -67,12 +69,12 @@ return ("0" + num).slice(-2);
 return ("00" + num).slice(-3);
 } else return num + "";
 }
-
+//这里是日期 202106252016012
 function getNum() {
 var date = new Date();
-return (date.getFullYear() + "") + formatZero(date.getMonth() + 1, 2) + formatZero(date.getDay(), 2)
+return (date.getFullYear() + "") + formatZero(date.getMonth() + 1, 2) + formatZero(date.getDate(), 2)
 + formatZero(date.getHours(), 2) + formatZero(date.getMinutes(), 2) + formatZero(date.getSeconds(), 2) + formatZero(date.getMilliseconds(), 3);
-}
+}//到此为止
         var num = getNum();
 	try {
 var ok = fb_article_place.match(/-|_/g)[0];
