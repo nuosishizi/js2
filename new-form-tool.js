@@ -106,6 +106,8 @@ function copy_mes_url() {
 
 // 生成链接
 function create_link() {
+    // 其他内容
+    var other_id = document.getElementById("other_id").value;
     // 名字
     var select_name = getSheetName("select_name").replace(/[0-9].+/g, "");
     // 发帖位置
@@ -132,7 +134,7 @@ function create_link() {
     var reg = RegExp(/holyspiritspeaks|kingdomsalvation|answerforchristians|bible-..|alkitabonline|bibbia-..|biblia|godfootsteps|jesucristo|evangelio|easternlightning|vangelodioggi|luciolededieu|lesalut/);
     if (original_link.match(reg)) {
         // 生成后的链接
-        var new_link = original_link + "?source=" + fb_post_place + user_id + "&num=" + num;
+        var new_link = original_link + "?source=" + fb_post_place + user_id + other_id + "&num=" + num;
         // 复制新链接
         copy(new_link);
         document.getElementById("copy_status").innerHTML = "复制成功";
@@ -177,6 +179,8 @@ if (guide.length == 0) {
 // 生成内容
 function create() {
     try {
+	// 其他内容
+	var other_id = document.getElementById("other_id").value;
         // 发帖内容，处理掉前后引号
         var post_str = document.getElementById("post_content").value.replace(/^"|"$/g, "");
         // 名字
@@ -205,7 +209,7 @@ function create() {
         // 加emoji
         post_str = post_str.replace(/#emoji#/g, emoji[getRandom(0, emoji.length)]);
         // 链接加代码
-        post_str = post_str.replace(/@@@/g, "?source=" + fb_post_place + user_id + "&num=" + num);
+        post_str = post_str.replace(/@@@/g, "?source=" + fb_post_place + user_id + other_id + "&num=" + num);
         // 替换Messenger链接
         post_str = post_str.replace(/#Messenger#/i, messenger_url + fb_post_place + user_id + "-" + now_date);
         // 替换WhatsApp链接
@@ -250,8 +254,8 @@ function create() {
         // 原链接输出
         document.getElementsByClassName("original_link")[0].value = original_link;
         // 追踪链接输出
-        document.getElementsByClassName("track_link")[0].value = original_link + "?source=" + fb_post_place + user_id + "&num=" + num;
-        document.getElementsByClassName("track_link")[0].innerHTML = original_link + "?source=" + fb_post_place + user_id + "&num=" + num;
+        document.getElementsByClassName("track_link")[0].value = original_link + "?source=" + fb_post_place + user_id + other_id + "&num=" + num;
+        document.getElementsByClassName("track_link")[0].innerHTML = original_link + "?source=" + fb_post_place + user_id + other_id + "&num=" + num;
         // 中文引导语输出
         document.getElementsByClassName("cn_guide")[0].value = fb_cn_guide;
         // 引导语输出
