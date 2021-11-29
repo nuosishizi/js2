@@ -131,7 +131,7 @@ function create_link() {
         alert("请输入原链接!");
         return;
     }
-    var reg = RegExp(/holyspiritspeaks|kingdomsalvation|answerforchristians|bible-..|alkitabonline|bibbia-..|biblia|godfootsteps|jesucristo|evangelio|easternlightning|vangelodioggi|luciolededieu|lesalut/);
+    var reg = RegExp(/holyspiritspeaks|kingdomsalvation|findshepherd|answerforchristians|bible-..|alkitabonline|bibbia-..|biblia|godfootsteps|jesucristo|evangelio|easternlightning|vangelodioggi|luciolededieu|lesalut/);
     if (original_link.match(reg)) {
         // 生成后的链接
         var new_link = original_link + "?source=" + fb_post_place + user_id + other_id + "&num=" + num;
